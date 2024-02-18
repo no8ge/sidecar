@@ -18,7 +18,7 @@ spec:
       args:
         - /bin/sh
         - -c
-        - pytest --html=report/report.html -s -v;sleep 60
+        - pytest --html=report/report.html -s -v;sleep infinity
       ports:
         - containerPort: 8002
       env:
