@@ -3,17 +3,18 @@ export GOPATH
 
 TAG_DATE := $(shell date +%Y%m%d%H%M%S)
 COMMIT_HASH := $(shell git rev-parse --short HEAD)
+BINARY := sidecar
 
 .DEFAULT_GOAL := build
 build: deps
-	go build -v -o $(CHART_NAME)
+	go build -v -o $(BINARY)
 
 clean:
-	rm -f $(CHART_NAME)
+	rm -f $(BINARY)
 
 run: build
-	@if [ ! -x ./$(CHART_NAME) ]; then echo "Binary not found or not executable"; exit 1; fi
-	./$(CHART_NAME)
+	@if [ ! -x ./$(BINARY) ]; then echo "Binary not found or not executable"; exit 1; fi
+	./$(BINARY) watch -e 172.16.60.10:31478 -b test -d /Users/zhoulun/workspace/no8ge/sidecar/tmp
 
 test:
 	go test -coverprofile=coverage.out ./tests
