@@ -72,7 +72,7 @@ func uploadToMinio(ch chan string, minioClient *minio.Client, bucketName string,
 			log.Println(err)
 			return
 		}
-		log.Println("Successed upload bytes: ", uploadInfo)
+		log.Println("Successed to upload bytes: ", uploadInfo)
 	}
 }
 
